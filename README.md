@@ -10,5 +10,6 @@
 - [x] Top Rated (TV, Movie)
 - [x] Popular (TV,Moive)
 - [x] Airing Today (TV)
-- [ ] TV Show Detail
-- [ ] Movie Detail
+- [x] TV Show Detail
+- [x] Movie Detail
+- [x] Search (Movie, TV)
