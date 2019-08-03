@@ -1,5 +1,5 @@
 import axios from "axios";
-import { encode } from "iconv-lite";
+
 
 const api = axios.create({
     baseURL: "https://api.themoviedb.org/3/",
