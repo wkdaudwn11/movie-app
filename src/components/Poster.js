@@ -10,7 +10,7 @@ const Rating = styled.span``;
 const Title = styled.span``;
 const Year = styled.span``;
 
-const Poster = ({ id, imageUrl, title, rating, year, isMovie }) => {
+const Poster = ({ id, imageUrl, title, rating, year, isMovie }) => (
     <Link to={ isMovie ? `/movie/${id}` : `/show/${id}` }>
         <Containter>
             <ImageContainter>
@@ -25,7 +25,7 @@ const Poster = ({ id, imageUrl, title, rating, year, isMovie }) => {
             </ImageContainter>
         </Containter>
     </Link>
-}
+);
 
 Poster.propTypes = {
     id: PropTypes.number.isRequired,
