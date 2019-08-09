@@ -11,11 +11,21 @@ export default class extends Component {
         loading: null
     }
 
-    handleSubmit = () => {
+    handleSubmit = (e) => {
+        e.preventDefault();
         const { searchTerm } = this.state;
         if (searchTerm !== ""){
             this.searchByTerm();
         }
+    }
+
+    updateTerm = e => {
+        const {
+            target: { value }
+        } = e;
+        this.setState({
+            searchTerm: value
+        })
     }
 
     searchByTerm = async () => {
@@ -50,6 +60,7 @@ export default class extends Component {
                 error={error}
                 loading={loading}
                 handleSubmit={this.handleSubmit}
+                updateTerm={this.updateTerm}
             />
         )
     }
