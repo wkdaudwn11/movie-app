@@ -14,18 +14,18 @@ export default class extends Component {
     async componentDidMount() {
         try {
             const {
-                data: { results: nowPlaying }
+                data: { results: topRated }
             } = await tvApi.topRated();
             const {
-                data: { results: upcoming }
+                data: { results: popular }
             } = await tvApi.popular();
             const {
-                data: { results: popular }
+                data: { results: airingToday }
             } = await tvApi.airingToday();
             this.setState({
-                nowPlaying,
-                upcoming,
-                popular
+                topRated,
+                popular,
+                airingToday
             })
         }catch{
             this.setState({
