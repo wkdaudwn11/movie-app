@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Section from '../../components/Section';
 import Loader from '../../components/Loader';
+import Message from '../../components/Message';
 
 const Container = styled.div`
     padding: 0px 10px;
@@ -37,6 +38,7 @@ const TVPresenter = ({ topRated, popular, airingToday, loading, error }) => (
                     ))}
                 </Section>
             )}
+            { error && <Message color="#e74c3c" text={error} /> }
         </Container>
     )
 );
