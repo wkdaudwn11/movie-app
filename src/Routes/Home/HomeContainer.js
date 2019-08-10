@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import HomePresenter from './HomePresenter';
 import { moviesApi } from '../../api';
 
-export default class extends Component {
+export default class HomeContainer extends Component {
+
     state = {
         nowPlaying: null,
         upcoming: null,
@@ -38,7 +39,7 @@ export default class extends Component {
         }
     }
 
-    redner() {
+    render() {
         const { nowPlaying, upcoming, popular, error, loading } = this.state;
         return (
             <HomePresenter

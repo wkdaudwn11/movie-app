@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -11,8 +11,12 @@ const Container = styled.div`
     padding: 0px 10px;
 `;
 
-const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
-    loading ? (
+
+class HomePresenter extends Component {
+    render() {
+        const { nowPlaying, popular, upcoming, loading, error } = this.props;   
+        return (
+            loading ? (
         <Loader />
     ) : (
         <Container>
@@ -25,7 +29,7 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
                             imageUrl={movie.poster_path}
                             title={movie.original_title}
                             rating={movie.vote_average}
-                            year={movie.release_date.substing(0,4)}
+                            year={movie.release_date}
                             isMovie={true}
                         />
                     ))}
@@ -41,7 +45,7 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
                             imageUrl={movie.poster_path}
                             title={movie.original_title}
                             rating={movie.vote_average}
-                            year={movie.release_date.substing(0,4)}
+                            year={movie.release_date}
                             isMovie={true}
                         />
                     ))}
@@ -57,7 +61,7 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
                             imageUrl={movie.poster_path}
                             title={movie.original_title}
                             rating={movie.vote_average}
-                            year={movie.release_date.substing(0,4)}
+                            year={movie.release_date}
                             isMovie={true}
                         />
                     ))}
@@ -66,7 +70,9 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
             { error && <Message color="#e74c3c" text={error} /> }
         </Container>
     )
-);
+        )
+    }
+}
 
 HomePresenter.propTypes = {
     nowPlaying: PropTypes.array,

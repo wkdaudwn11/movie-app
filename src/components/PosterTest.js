@@ -8,8 +8,8 @@ const Containter = styled.div`
 `;
 
 const Image = styled.div`
-    background-image: url(${props => props.bgUrl});
-    height: 200px;
+    background-image: url()(${props => props.bgUrl});
+    height: 100px;
     background-size: cover;
     border-radius: 4px;
     background-position: center center;
@@ -48,14 +48,14 @@ const Year = styled.span`
 `;
 
 
-class Poster extends Component {
+class PosterTest extends Component {
     render() {
         const { id, imageUrl, title, rating, year, isMovie } = this.props;
         return (
             <Link to={ isMovie ? `/movie/${id}` : `/show/${id}` }>
                 <Containter>
                     <ImageContainter>
-                        <Image bgUrl={
+                        <Image bgurl={
                             imageUrl
                             ? `https://image.tmdb.org/t/p/w300${imageUrl}`
                             : require('./assets/noPosterSmall.png')
@@ -76,7 +76,7 @@ class Poster extends Component {
     }
 }
 
-Poster.propTypes = {
+PosterTest.propTypes = {
     id: PropTypes.number.isRequired,
     imageUrl: PropTypes.string,
     title: PropTypes.string.isRequired,
@@ -85,4 +85,4 @@ Poster.propTypes = {
     isMovie: PropTypes.bool,
 }
 
-export default Poster;
+export default PosterTest;
