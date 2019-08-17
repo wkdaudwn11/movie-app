@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import TVPresenter from './TVPresenter';
 import { tvApi } from '../../api';
 
-export default class extends Component {
+class TvContainer extends Component {
     state = {
         topRated: null,
         popular: null,
@@ -29,7 +29,7 @@ export default class extends Component {
             })
         }catch{
             this.setState({
-                error: "Can't find movies information."
+                error: "Can't find tv information."
             })
         }finally{
             this.setState({
@@ -38,7 +38,7 @@ export default class extends Component {
         }
     }
 
-    redner() {
+    render() {
         const { topRated, popular, airingToday, error, loading } = this.state;
         return (
             <TVPresenter
@@ -51,3 +51,5 @@ export default class extends Component {
         )
     }
 }
+
+export default TvContainer;

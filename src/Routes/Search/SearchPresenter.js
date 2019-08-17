@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -22,59 +22,64 @@ const Input = styled.input`
     width: 100%;
 `;
 
-const SearchPresenter = ({ movieResults, tvResults, searchTerm, loading, error, handleSubmit, updateTerm }) => (
-    <Container>
-        <Form onSubmit={handleSubmit}>
-            <Input
-                placeholder="Search Movies or TV Shows..."
-                value={searchTerm}
-                onChange={updateTerm}
-            />
-        </Form>
+class SearchPresenter extends Component{
+    render(){
+        const { movieResults, tvResults, searchTerm, loading, error, handleSubmit, updateTerm } = this.props;
+        return(
+            <Container>
+                <Form onSubmit={handleSubmit}>
+                    <Input
+                        placeholder="Search Movies or TV Shows..."
+                        value={searchTerm}
+                        onChange={updateTerm}
+                    />
+                </Form>
 
-        {loading ? (
-            <Loader />
-        ) : (
-            <>
-                {movieResults && movieResults.length > 0 && (
-                    <Section title="Movie Results">
-                        {movieResults.map(movie => (
-                            <Poster
-                                key={movie.id}
-                                id={movie.id}
-                                imageUrl={movie.poster_path}
-                                title={movie.original_title}
-                                rating={movie.vote_average}
-                                year={movie.release_date.substing(0,4)}
-                                isMovie={true}
-                            />
-                        ))}
-                    </Section>
-                )}
+                {loading ? (
+                    <Loader />
+                ) : (
+                    <>
+                        {movieResults && movieResults.length > 0 && (
+                            <Section title="Movie Results">
+                                {movieResults.map(movie => (
+                                    <Poster
+                                        key={movie.id}
+                                        id={movie.id}
+                                        imageUrl={movie.poster_path}
+                                        title={movie.original_title}
+                                        rating={movie.vote_average}
+                                        year={movie.release_date}
+                                        isMovie={true}
+                                    />
+                                ))}
+                            </Section>
+                        )}
 
-                {tvResults && tvResults.length > 0 && (
-                    <Section title="TV Results">
-                        {tvResults.map(tv => (
-                            <Poster
-                                key={tv.id}
-                                id={tv.id}
-                                imageUrl={tv.poster_path}
-                                title={tv.original_name}
-                                rating={tv.vote_average}
-                                year={tv.release_date.substing(0,4)}
-                                isMovie={false}
-                            />
-                        ))}
-                    </Section>
+                        {tvResults && tvResults.length > 0 && (
+                            <Section title="TV Results">
+                                {tvResults.map(tv => (
+                                    <Poster
+                                        key={tv.id}
+                                        id={tv.id}
+                                        imageUrl={tv.poster_path}
+                                        title={tv.original_name}
+                                        rating={tv.vote_average}
+                                        year={tv.release_date}
+                                        isMovie={false}
+                                    />
+                                ))}
+                            </Section>
+                        )}
+                    </>
                 )}
-            </>
-        )}
-        { error && <Message color="#e74c3c" text={error} /> }
-        {tvResults && movieResults && tvResults.length === 0 && movieResults === 0 && (
-            <Message color="#95a5a6" text="Nothing found" />
-        )}
-    </Container>
-);
+                { error && <Message color="#e74c3c" text={error} /> }
+                {tvResults && movieResults && tvResults.length === 0 && movieResults === 0 && (
+                    <Message color="#95a5a6" text="Nothing found" />
+                )}
+            </Container>
+        );
+    }
+}
 
 SearchPresenter.propTypes = {
     movieResults: PropTypes.array,

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import SearchPresenter from './SearchPresenter';
 import { moviesApi, tvApi } from '../../api';
 
-export default class extends Component {
+class SearchContainer extends Component {
     state = {
         movieResults: null,
         tvResults: null,
@@ -50,7 +50,7 @@ export default class extends Component {
         }
     }
 
-    redner() {
+    render() {
         const { movieResults, tvResults, searchTerm, error, loading } = this.state;
         return (
             <SearchPresenter
@@ -62,6 +62,8 @@ export default class extends Component {
                 handleSubmit={this.handleSubmit}
                 updateTerm={this.updateTerm}
             />
-        )
+        );
     }
 }
+
+export default SearchContainer;

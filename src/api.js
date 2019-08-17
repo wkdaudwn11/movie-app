@@ -13,7 +13,7 @@ export const moviesApi = {
     upcoming: () => api.get("movie/upcoming"),
     popular: () => api.get("movie/popular"),
     movieDetail: id =>
-        api.get(`movie/${id}`, {
+        api.get(`movie/${id}?api_key=ae61da0a1b03db56e103056851b7e551`, {
             params: {
                 append_to_response: "videos"
             }
@@ -24,7 +24,7 @@ export const moviesApi = {
                 query: encodeURIComponent(term)
             }
         })
-}
+};
 
 export const tvApi = {
     topRated: () => api.get("tv/top_rated"),
