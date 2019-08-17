@@ -23,4 +23,10 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea
+.idea/.gitignore
+.idea/misc.xml
+.idea/modules.xml
+.idea/movie-app.iml
+.idea/vcs.xml
+
 package-lock.json
